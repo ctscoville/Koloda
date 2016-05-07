@@ -41,7 +41,7 @@ public protocol KolodaViewDelegate:class {
     func koloda(koloda: KolodaView, shouldSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) -> Bool
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection)
     func kolodaDidRunOutOfCards(koloda: KolodaView)
-    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt)
+    func koloda(koloda: KolodaView, didSelectCard card:DraggableCardView, atIndex index: UInt)
     func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool
     func kolodaShouldMoveBackgroundCard(koloda: KolodaView) -> Bool
     func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool
@@ -58,7 +58,7 @@ public extension KolodaViewDelegate {
     func koloda(koloda: KolodaView, allowedDirectionsForIndex index: UInt) -> [SwipeResultDirection] { return [.Left, .Right] }
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {}
     func kolodaDidRunOutOfCards(koloda: KolodaView) {}
-    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {}
+    func koloda(koloda: KolodaView, didSelectCard card:DraggableCardView, atIndex index: UInt) {}
     func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool { return true }
     func kolodaShouldMoveBackgroundCard(koloda: KolodaView) -> Bool { return true }
     func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool { return true }
@@ -291,7 +291,7 @@ public class KolodaView: UIView, DraggableCardDelegate {
         guard let visibleIndex = visibleCards.indexOf(card) else { return }
         
         let index = currentCardIndex + visibleIndex
-        delegate?.koloda(self, didSelectCardAtIndex: UInt(index))
+        delegate?.koloda(self, didSelectCard:card, atIndex: UInt(index))
     }
     
     func card(cardSwipeThresholdRatioMargin card: DraggableCardView) -> CGFloat? {
