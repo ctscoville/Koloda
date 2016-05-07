@@ -54,7 +54,7 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
         kolodaView.resetCurrentCardIndex()
     }
     
-    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
+    func koloda(koloda: KolodaView, didSelectCard card:DraggableCardView, atIndex index: UInt) {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
     }
     

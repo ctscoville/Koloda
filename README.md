@@ -156,7 +156,7 @@ This method is called whenever the KolodaView swipes card. It is called regardle
 ```    
 This method is called when the KolodaView has no cards to display.
 ```swift
-	func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt)
+	func koloda(koloda: KolodaView, didSelectCard card: DraggableCardView, atIndex index: UInt)
 ```
 This method is called when one of cards is tapped.
 ```swift
